@@ -1,32 +1,10 @@
 const notAllowed = /[^\p{Ll}]/gu; // Everything but lowercase letters
 
-let anagramSource;
-let anagramAttempt;
-let leftoverLetters;
-let leftoverLettersString;
-
 function go(){
-    resetErrorMessage();
-    getAnagramSource();
-    getAnagramAttempt();
-    generateLeftoverLetters();
-    displayLeftoverLetters(); // This also displays the error message; it would be better to separate them
-}
-
-function resetErrorMessage(){
     document.getElementById("errorMessage").innerHTML = "";
-}
-
-function getAnagramSource(){
-    anagramSource = document.getElementById("anagramSource").value.toLowerCase().replaceAll(notAllowed,"");
-}
-
-function getAnagramAttempt(){
-    anagramAttempt = document.getElementById("anagramAttempt").value.toLowerCase().replaceAll(notAllowed,"");
-}
-
-function generateLeftoverLetters(){
-    leftoverLetters = anagramSource.split("");
+    let anagramSource = document.getElementById("anagramSource").value.toLowerCase().replaceAll(notAllowed,"");
+    let anagramAttempt = document.getElementById("anagramAttempt").value.toLowerCase().replaceAll(notAllowed,"");
+    let leftoverLetters = anagramSource.split("");
     for (let i = 0; i < anagramAttempt.length; i++){
         if (anagramAttempt[i] && leftoverLetters.includes(anagramAttempt[i])){
             for (let j = 0; j < leftoverLetters.length; j++){
@@ -39,10 +17,7 @@ function generateLeftoverLetters(){
             document.getElementById("errorMessage").innerHTML = "Je hebt een fout gemaakt: verwijder een <b>" + anagramAttempt[i] + "</b>.";
         }
     }
-}
-
-function displayLeftoverLetters(){
-    leftoverLettersString = leftoverLetters.join("");
+    let leftoverLettersString = leftoverLetters.join("");
     if (leftoverLettersString == ""){
         document.getElementById("leftoverLetters").innerHTML = "&mdash;";
     } else {
