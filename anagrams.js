@@ -20,6 +20,7 @@ function resetErrorMessage(){
 function getAnagramSource(){
     anagramSource = document.getElementById("anagramSource").value.toLowerCase().replaceAll(notAllowed,"");
 }
+
 function getAnagramAttempt(){
     anagramAttempt = document.getElementById("anagramAttempt").value.toLowerCase().replaceAll(notAllowed,"");
 }
