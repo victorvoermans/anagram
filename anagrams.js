@@ -1,10 +1,11 @@
-const notAllowed = /[^\p{Ll}]/gu; // Everything but lowercase letters
+const notAllowed = /[^\p{Ll}]/gu; // Everything but lowercase letters, according to ChatGPT
 
 function go(){
-    document.getElementById("errorMessage").innerHTML = "";
+    document.getElementById("message").innerHTML = "";
     let anagramSource = document.getElementById("anagramSource").value.toLowerCase().replaceAll(notAllowed,"");
     let anagramAttempt = document.getElementById("anagramAttempt").value.toLowerCase().replaceAll(notAllowed,"");
     let leftoverLetters = anagramSource.split("");
+    let wrongLetters = [];
     for (let i = 0; i < anagramAttempt.length; i++){
         if (anagramAttempt[i] && leftoverLetters.includes(anagramAttempt[i])){
             for (let j = 0; j < leftoverLetters.length; j++){
@@ -14,13 +15,23 @@ function go(){
                 }
             }
         } else {
-            document.getElementById("errorMessage").innerHTML = "Je hebt een fout gemaakt: verwijder een <b>" + anagramAttempt[i] + "</b>.";
+            wrongLetters.push(anagramAttempt[i]);
         }
     }
     let leftoverLettersString = leftoverLetters.join("");
-    if (leftoverLettersString == ""){
-        document.getElementById("leftoverLetters").innerHTML = "&mdash;";
-    } else {
-        document.getElementById("leftoverLetters").innerHTML = leftoverLettersString;
+    leftoverLettersString = leftoverLettersString == "" ? "&mdash;" : leftoverLettersString;
+    document.getElementById("leftoverLetters").innerHTML = leftoverLettersString;
+    let wrongLettersString = wrongLetters.join("");
+    if (wrongLetters[0]){
+        document.getElementById("message").innerHTML = "Je hebt een fout gemaakt. Verwijder <b>" + wrongLettersString + "</b>.";
     }
+    if (!wrongLetters[0] && !leftoverLetters[0] && anagramSource != ""){
+        document.getElementById("message").innerHTML = "<b>" + document.getElementById("anagramAttempt").value + "</b> is een anagram van <b>" + document.getElementById("anagramSource").value + "</b>.";
+    }
+}
+
+function clearFields(){
+    document.getElementById("anagramSource").value = "";
+    document.getElementById("anagramAttempt").value = "";
+    go();
 }

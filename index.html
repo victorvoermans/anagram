@@ -17,7 +17,7 @@
     <!-- Header -->
     <h2 class="text-secondary">Anagrammaker</h2>
     <!-- Explanation -->
-    <p class="text-secondary">Vul in het eerste veld je naam in, en begin in het tweede veld te experimenteren met anagrammen. Tussen de twee velden in zie je de letters die over zijn.</p>
+    <p class="text-secondary">Vul in het eerste veld je naam in, en begin in het tweede veld te experimenteren met anagrammen. Tussen de twee velden in zie je de letters die over zijn. <span onclick="clearFields()" style="cursor: pointer; text-decoration: underline;">Maak leeg</span></p>
     <!-- Name -->
     <div class="form-floating">
       <input type="text" class="form-control" id="anagramSource" name="anagramSource" onkeyup="go()">
@@ -30,8 +30,8 @@
       <input type="text" class="form-control" id="anagramAttempt" name="anagramAttempt" onkeyup="go()">
       <label for="anagramAttempt">Anagram</label>
     </div>
-    <!-- Error Message -->
-    <p class="my-3" id="errorMessage"></p>
+    <!-- Message -->
+    <p class="my-3" id="message"></p>
     <!-- Draft -->
     <div class="form-floating">
       <textarea class="form-control" id="klad" style="height:189px;"></textarea>
