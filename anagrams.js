@@ -2,10 +2,10 @@ const notAllowed = /[^\p{Ll}]/gu; // Everything but lowercase letters, according
 
 function go(){
     document.getElementById("message").innerHTML = "";
-    let anagramSource = document.getElementById("anagramSource").value.toLowerCase().replaceAll(notAllowed,"");
     let anagramSourceRaw = document.getElementById("anagramSource").value;
-    let anagramAttempt = document.getElementById("anagramAttempt").value.toLowerCase().replaceAll(notAllowed,"");
+    let anagramSource = anagramSourceRaw.toLowerCase().replaceAll(notAllowed,"");
     let anagramAttemptRaw = document.getElementById("anagramAttempt").value;
+    let anagramAttempt = anagramAttemptRaw.toLowerCase().replaceAll(notAllowed,"");
     let leftoverLetters = anagramSource.split("");
     let wrongLetters = [];
     for (let i = 0; i < anagramAttempt.length; i++){
