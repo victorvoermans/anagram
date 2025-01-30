@@ -3,7 +3,9 @@ const notAllowed = /[^\p{Ll}]/gu; // Everything but lowercase letters, according
 function go(){
     document.getElementById("message").innerHTML = "";
     let anagramSource = document.getElementById("anagramSource").value.toLowerCase().replaceAll(notAllowed,"");
+    let anagramSourceRaw = document.getElementById("anagramSource").value;
     let anagramAttempt = document.getElementById("anagramAttempt").value.toLowerCase().replaceAll(notAllowed,"");
+    let anagramAttemptRaw = document.getElementById("anagramAttempt").value;
     let leftoverLetters = anagramSource.split("");
     let wrongLetters = [];
     for (let i = 0; i < anagramAttempt.length; i++){
@@ -25,8 +27,8 @@ function go(){
     if (wrongLetters[0]){
         document.getElementById("message").innerHTML = "Je hebt een fout gemaakt. Verwijder <b>" + wrongLettersString + "</b>.";
     }
-    if (!wrongLetters[0] && !leftoverLetters[0] && anagramSource != ""){
-        document.getElementById("message").innerHTML = "<b>" + document.getElementById("anagramAttempt").value + "</b> is een anagram van <b>" + document.getElementById("anagramSource").value + "</b>.";
+    if (!wrongLetters[0] && !leftoverLetters[0] && anagramSource != "" && anagramAttemptRaw != anagramSourceRaw){
+        document.getElementById("message").innerHTML = "<b>" + anagramAttemptRaw + "</b> is een anagram van <b>" + anagramSourceRaw + "</b>.";
     }
 }
 
