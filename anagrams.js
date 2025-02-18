@@ -27,9 +27,9 @@ function go(){
     if (wrongLetters[0]){
         document.getElementById("message").innerHTML = "Je hebt een fout gemaakt. Verwijder <b>" + wrongLettersString + "</b>.";
     }
-    if (!wrongLetters[0] && !leftoverLetters[0] && anagramSource != "" && anagramAttemptRaw != anagramSourceRaw){
-        document.getElementById("message").innerHTML = "<b>" + anagramAttemptRaw + "</b> is een anagram van <b>" + anagramSourceRaw + "</b>.";
-    }
+    // if (!wrongLetters[0] && !leftoverLetters[0] && anagramSource != "" && anagramAttemptRaw != anagramSourceRaw){
+    //     document.getElementById("message").innerHTML = "<b>" + anagramAttemptRaw + "</b> is een anagram van <b>" + anagramSourceRaw + "</b>.";
+    // }
 }
 
 function clearFields(){
